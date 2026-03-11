@@ -45,13 +45,13 @@ description: '生成思维导图技能。当用户需要生成思维导图时使
 
 最佳实践：
 
-`set_mind_map_data('# 思维导图', 'logicalStructure', 'skyGreen')`
+`set_mind_map_data('# 思维导图', 'logicalStructure', 'oreo')`
 
 反面示例：
 
 ```
 set_mind_map_data('# 思维导图', 'logicalStructure')
-set_mind_map_theme('skyGreen')
+set_mind_map_theme('oreo')
 ```
 
 注意：

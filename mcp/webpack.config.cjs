@@ -10,11 +10,22 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'index.js',
+    library: {
+      type: 'module'
+    },
     // 清理输出目录
     clean: true
   },
+  experiments: {
+    outputModule: true // 启用 ES Module 输出
+  },
   // 排除 Node.js 内置模块和 node_modules
-  externals: [nodeExternals()],
+  externals: [
+    nodeExternals({
+      modulesDir: path.resolve(__dirname, 'node_modules'),
+      importType: 'module' // 指定外部依赖的导入类型
+    })
+  ],
   // 模式：开发或生产
   mode: process.env.NODE_ENV || 'development',
   devtool: false,

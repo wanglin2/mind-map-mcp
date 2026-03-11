@@ -1,18 +1,25 @@
-/******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
+import { McpServer as __WEBPACK_EXTERNAL_MODULE__modelcontextprotocol_sdk_server_mcp_js_45c326f0_McpServer__ } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { StdioServerTransport as __WEBPACK_EXTERNAL_MODULE__modelcontextprotocol_sdk_server_stdio_js_25848778_StdioServerTransport__ } from "@modelcontextprotocol/sdk/server/stdio.js";
+import { default as __WEBPACK_EXTERNAL_MODULE_http_default__ } from "http";
+import { default as __WEBPACK_EXTERNAL_MODULE_fs_default__ } from "fs";
+import { default as __WEBPACK_EXTERNAL_MODULE_path_default__ } from "path";
+import { WebSocket as __WEBPACK_EXTERNAL_MODULE_ws_WebSocket__, WebSocketServer as __WEBPACK_EXTERNAL_MODULE_ws_WebSocketServer__ } from "ws";
+import { fileURLToPath as __WEBPACK_EXTERNAL_MODULE_url_fileURLToPath__ } from "url";
+import { z as __WEBPACK_EXTERNAL_MODULE_zod_z__ } from "zod";
+import { default as __WEBPACK_EXTERNAL_MODULE_open_default__ } from "open";
 
 ;// external "@modelcontextprotocol/sdk/server/mcp.js"
-const mcp_js_namespaceObject = require("@modelcontextprotocol/sdk/server/mcp.js");
+
 ;// external "@modelcontextprotocol/sdk/server/stdio.js"
-const stdio_js_namespaceObject = require("@modelcontextprotocol/sdk/server/stdio.js");
+
 ;// external "http"
-const external_http_namespaceObject = require("http");
+
 ;// external "fs"
-const external_fs_namespaceObject = require("fs");
+
 ;// external "path"
-const external_path_namespaceObject = require("path");
+
 ;// external "ws"
-const external_ws_namespaceObject = require("ws");
+
 ;// ./src/logger.js
 // 日志工具
 function createLogger(prefix) {
@@ -79,7 +86,7 @@ function isPlainObject(value) {
  * 启动 WebSocket 服务器
  */
 function startWebSocket(server) {
-  wss = new external_ws_namespaceObject.WebSocketServer({
+  wss = new __WEBPACK_EXTERNAL_MODULE_ws_WebSocketServer__({
     server: server
   });
   log.info('WebSocket server attached');
@@ -142,7 +149,7 @@ function sendMsg(msg) {
     throw new Error('当前没有打开的思维导图页面，请先调用open_editor工具打开一个思维导图页面');
   }
   clients.forEach(function (client) {
-    if (client.readyState === external_ws_namespaceObject.WebSocket.OPEN) {
+    if (client.readyState === __WEBPACK_EXTERNAL_MODULE_ws_WebSocket__.OPEN) {
       log.info('Sending message:', msg);
       client.send(JSON.stringify(msg));
     }
@@ -177,7 +184,7 @@ function _sendMsgWithCallback() {
   return _sendMsgWithCallback.apply(this, arguments);
 }
 ;// external "url"
-const external_url_namespaceObject = require("url");
+
 ;// ./src/http-server.js
 function http_server_regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return http_server_regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (http_server_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, http_server_regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, http_server_regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), http_server_regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", http_server_regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), http_server_regeneratorDefine2(u), http_server_regeneratorDefine2(u, o, "Generator"), http_server_regeneratorDefine2(u, n, function () { return this; }), http_server_regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (http_server_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
 function http_server_regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } http_server_regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { http_server_regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, http_server_regeneratorDefine2(e, r, n, t); }
@@ -189,7 +196,7 @@ function http_server_asyncToGenerator(n) { return function () { var t = this, e 
 
 
 
-var isDev = "production" === 'development';
+var isDev = (/* unused pure expression or super */ null && ("production" === 'development'));
 var MIME_TYPES = {
   '.html': 'text/html; charset=utf-8',
   '.js': 'text/javascript; charset=utf-8',
@@ -205,8 +212,8 @@ var MIME_TYPES = {
 };
 function safeFilePath(rootDir, requestPath) {
   var decoded = decodeURIComponent(requestPath.split('?')[0] || '/');
-  var normalized = external_path_namespaceObject.normalize(decoded).replace(/^(\.\.[/\\])+/, '');
-  return external_path_namespaceObject.join(rootDir, normalized);
+  var normalized = __WEBPACK_EXTERNAL_MODULE_path_default__.normalize(decoded).replace(/^(\.\.[/\\])+/, '');
+  return __WEBPACK_EXTERNAL_MODULE_path_default__.join(rootDir, normalized);
 }
 var MAX_PORT_ATTEMPTS = 20;
 var currentServerPort = null;
@@ -228,10 +235,10 @@ function _startHttpServer() {
     return http_server_regenerator().w(function (_context) {
       while (1) switch (_context.n) {
         case 0:
-          __filename = (0,external_url_namespaceObject.fileURLToPath)("file:///E:/wanglin/mind-map-mcp/mcp/src/http-server.js");
-          __dirname = external_path_namespaceObject.dirname(__filename); // 当前目录
-          webRoot = isDev ? external_path_namespaceObject.resolve(__dirname, '../../package/web-dist') : external_path_namespaceObject.resolve(__dirname, './web-dist');
-          if (external_fs_namespaceObject.existsSync(webRoot)) {
+          __filename = __WEBPACK_EXTERNAL_MODULE_url_fileURLToPath__("file:///E:/wanglin/mind-map-mcp/mcp/src/http-server.js");
+          __dirname = __WEBPACK_EXTERNAL_MODULE_path_default__.dirname(__filename); // 当前目录
+          webRoot = __WEBPACK_EXTERNAL_MODULE_path_default__.resolve(__dirname, '../web-dist');
+          if (__WEBPACK_EXTERNAL_MODULE_fs_default__.existsSync(webRoot)) {
             _context.n = 1;
             break;
           }
@@ -239,7 +246,7 @@ function _startHttpServer() {
         case 1:
           _tryListen = function tryListen(tryPort) {
             return new Promise(function (resolve, reject) {
-              var server = external_http_namespaceObject.createServer(function (req, res) {
+              var server = __WEBPACK_EXTERNAL_MODULE_http_default__.createServer(function (req, res) {
                 log.info(req.url);
                 if (!req.url) {
                   res.writeHead(400);
@@ -250,13 +257,13 @@ function _startHttpServer() {
                 var filePath = safeFilePath(webRoot, requestPath);
 
                 // 如果资源不存在，回退到 SPA 入口
-                if (!external_fs_namespaceObject.existsSync(filePath) || external_fs_namespaceObject.statSync(filePath).isDirectory()) {
+                if (!__WEBPACK_EXTERNAL_MODULE_fs_default__.existsSync(filePath) || __WEBPACK_EXTERNAL_MODULE_fs_default__.statSync(filePath).isDirectory()) {
                   log.info("Resource not found, falling back to index.html: ".concat(filePath));
-                  filePath = external_path_namespaceObject.join(webRoot, 'index.html');
+                  filePath = __WEBPACK_EXTERNAL_MODULE_path_default__.join(webRoot, 'index.html');
                 }
-                var stat = external_fs_namespaceObject.statSync(filePath);
+                var stat = __WEBPACK_EXTERNAL_MODULE_fs_default__.statSync(filePath);
                 var etag = "W/\"".concat(stat.size, "-").concat(stat.mtimeMs, "\"");
-                var isIndex = external_path_namespaceObject.basename(filePath) === 'index.html';
+                var isIndex = __WEBPACK_EXTERNAL_MODULE_path_default__.basename(filePath) === 'index.html';
                 var isAsset = requestPath.startsWith('/dist/');
                 if (req.headers['if-none-match'] === etag) {
                   log.info("Not modified: ".concat(filePath));
@@ -264,13 +271,13 @@ function _startHttpServer() {
                   res.end();
                   return;
                 }
-                external_fs_namespaceObject.readFile(filePath, function (err, data) {
+                __WEBPACK_EXTERNAL_MODULE_fs_default__.readFile(filePath, function (err, data) {
                   if (err) {
                     res.writeHead(500);
                     res.end('Internal Server Error');
                     return;
                   }
-                  var ext = external_path_namespaceObject.extname(filePath);
+                  var ext = __WEBPACK_EXTERNAL_MODULE_path_default__.extname(filePath);
                   var contentType = MIME_TYPES[ext] || 'application/octet-stream';
                   var cacheControl = isIndex ? 'no-cache' : isAsset ? 'public, max-age=31536000, immutable' : 'no-cache';
                   res.writeHead(200, {
@@ -308,9 +315,9 @@ function _startHttpServer() {
   return _startHttpServer.apply(this, arguments);
 }
 ;// external "zod"
-const external_zod_namespaceObject = require("zod");
+
 ;// external "open"
-const external_open_namespaceObject = require("open");
+
 ;// ./src/tools/start-editor.js
 function start_editor_regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return start_editor_regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (start_editor_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, start_editor_regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, start_editor_regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), start_editor_regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", start_editor_regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), start_editor_regeneratorDefine2(u), start_editor_regeneratorDefine2(u, o, "Generator"), start_editor_regeneratorDefine2(u, n, function () { return this; }), start_editor_regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (start_editor_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
 function start_editor_regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } start_editor_regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { start_editor_regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, start_editor_regeneratorDefine2(e, r, n, t); }
@@ -325,7 +332,7 @@ function registerStartEditor(server) {
   server.registerTool('start_editor', {
     title: '打开思维导图编辑器',
     description: '如果要绘制思维导图，首先需要调用这个工具在默认浏览器打开思维导图编辑器页面。\n\n' + '这个工具调用完成后：\n\n' + '1. 浏览器会打开一个新标签页，显示思维导图编辑器页面，并渲染默认思维导图数据。\n' + '2. 编辑器页面会与 MCP 服务器通过 WebSocket 连接。\n',
-    inputSchema: external_zod_namespaceObject.z.object({})
+    inputSchema: __WEBPACK_EXTERNAL_MODULE_zod_z__.object({})
   }, /*#__PURE__*/function () {
     var _ref2 = start_editor_asyncToGenerator(/*#__PURE__*/start_editor_regenerator().m(function _callee(_ref) {
       var port, url, message, _t;
@@ -338,7 +345,7 @@ function registerStartEditor(server) {
             url = "http://localhost:".concat(port);
             log.info("Opening browser at ".concat(url));
             _context.n = 2;
-            return external_open_namespaceObject(url, {
+            return __WEBPACK_EXTERNAL_MODULE_open_default__(url, {
               wait: false
             });
           case 2:
@@ -590,10 +597,10 @@ function set_mind_map_data_asyncToGenerator(n) { return function () { var t = th
 function registerSetMindMapData(server) {
   server.registerTool('set_mind_map_data', {
     description: '设置当前打开的思维导图页面所渲染的思维导图数据。\n' + '不能修改部分数据，只能完整替换当前所渲染的思维导图数据。\n' + '参数介绍：\n' + 'data：思维导图数据，必须是Markdown格式的字符串。\n' + "layout\uFF1A\u601D\u7EF4\u5BFC\u56FE\u7ED3\u6784\uFF0C\u53EF\u9009\u53C2\u6570\u3002\u53EF\u9009\u503C\u4E3A\uFF1A".concat(layoutStr, "\u3002\n") + "theme\uFF1A\u601D\u7EF4\u5BFC\u56FE\u6837\u5F0F\u4E3B\u9898\uFF0C\u53EF\u9009\u53C2\u6570\u3002\u53EF\u9009\u503C\u4E3A\uFF1A".concat(themeStr, "\u3002\n"),
-    inputSchema: external_zod_namespaceObject.z.object({
-      data: external_zod_namespaceObject.z.string().describe('思维导图数据'),
-      layout: external_zod_namespaceObject.z.string().describe('思维导图结构').optional(),
-      theme: external_zod_namespaceObject.z.string().describe('思维导图主题').optional()
+    inputSchema: __WEBPACK_EXTERNAL_MODULE_zod_z__.object({
+      data: __WEBPACK_EXTERNAL_MODULE_zod_z__.string().describe('思维导图数据'),
+      layout: __WEBPACK_EXTERNAL_MODULE_zod_z__.string().describe('思维导图结构').optional(),
+      theme: __WEBPACK_EXTERNAL_MODULE_zod_z__.string().describe('思维导图主题').optional()
     })
   }, /*#__PURE__*/function () {
     var _ref2 = set_mind_map_data_asyncToGenerator(/*#__PURE__*/set_mind_map_data_regenerator().m(function _callee(_ref) {
@@ -645,8 +652,8 @@ function set_mind_map_theme_asyncToGenerator(n) { return function () { var t = t
 function registerSetMindMapTheme(server) {
   server.registerTool('set_mind_map_theme', {
     description: '修改思维导图样式主题。\n' + '参数介绍：\n' + "theme\uFF1A\u601D\u7EF4\u5BFC\u56FE\u6837\u5F0F\u4E3B\u9898\uFF0C\u53EF\u9009\u53C2\u6570\u3002\u53EF\u9009\u503C\u4E3A\uFF1A".concat(themeStr, "\u3002\n"),
-    inputSchema: external_zod_namespaceObject.z.object({
-      theme: external_zod_namespaceObject.z.string().describe('思维导图样式主题')
+    inputSchema: __WEBPACK_EXTERNAL_MODULE_zod_z__.object({
+      theme: __WEBPACK_EXTERNAL_MODULE_zod_z__.string().describe('思维导图样式主题')
     })
   }, /*#__PURE__*/function () {
     var _ref2 = set_mind_map_theme_asyncToGenerator(/*#__PURE__*/set_mind_map_theme_regenerator().m(function _callee(_ref) {
@@ -696,8 +703,8 @@ function set_mind_map_layout_asyncToGenerator(n) { return function () { var t = 
 function registerSetMindMapLayout(server) {
   server.registerTool('set_mind_map_layout', {
     description: '修改思维导图结构。\n' + '参数介绍：\n' + "layout\uFF1A\u601D\u7EF4\u5BFC\u56FE\u7ED3\u6784\uFF0C\u53EF\u9009\u53C2\u6570\u3002\u53EF\u9009\u503C\u4E3A\uFF1A".concat(layoutStr, "\u3002\n"),
-    inputSchema: external_zod_namespaceObject.z.object({
-      layout: external_zod_namespaceObject.z.string().describe('思维导图结构')
+    inputSchema: __WEBPACK_EXTERNAL_MODULE_zod_z__.object({
+      layout: __WEBPACK_EXTERNAL_MODULE_zod_z__.string().describe('思维导图结构')
     })
   }, /*#__PURE__*/function () {
     var _ref2 = set_mind_map_layout_asyncToGenerator(/*#__PURE__*/set_mind_map_layout_regenerator().m(function _callee(_ref) {
@@ -746,7 +753,7 @@ function close_editor_asyncToGenerator(n) { return function () { var t = this, e
 function registerCloseEditor(server) {
   server.registerTool('close_editor', {
     description: '关闭当前打开的思维导图编辑页面。',
-    inputSchema: external_zod_namespaceObject.z.object({})
+    inputSchema: __WEBPACK_EXTERNAL_MODULE_zod_z__.object({})
   }, /*#__PURE__*/close_editor_asyncToGenerator(/*#__PURE__*/close_editor_regenerator().m(function _callee() {
     var message, _t;
     return close_editor_regenerator().w(function (_context) {
@@ -790,9 +797,9 @@ function export_mind_map_to_asyncToGenerator(n) { return function () { var t = t
 function registerExportMindMapTo(server) {
   server.registerTool('export_mind_map_to', {
     description: '将当前渲染的思维导图导出为指定类型的文件。\n' + '参数介绍：\n' + "exportType\uFF1A\u5BFC\u51FA\u6587\u4EF6\u7C7B\u578B\u3002\u53EF\u9009\u503C\u4E3A\uFF1A".concat(exportTypeStr, "\u3002\n") + "saveFolder\uFF1A\u5BFC\u51FA\u7684\u6587\u4EF6\u8981\u4FDD\u5B58\u5230\u7684\u76EE\u5F55\u3002\u7981\u6B62\u4F7F\u7528\u76F8\u5BF9\u76EE\u5F55\uFF01\u8BE5\u53C2\u6570\u4E3A\u53EF\u9009\u53C2\u6570\uFF0C\u5982\u679C\u7528\u6237\u6CA1\u6709\u660E\u786E\u8BA9\u4F60\u5BFC\u51FA\u5230\u5F53\u524D\u76EE\u5F55\uFF0C\u8BE5\u53C2\u6570\u53EF\u4EE5\u4E0D\u7528\u4F20\u9012\uFF0C\u4F1A\u76F4\u63A5\u5728\u6D4F\u89C8\u5668\u7AEF\u8FDB\u884C\u5BFC\u51FA\u3002",
-    inputSchema: external_zod_namespaceObject.z.object({
-      exportType: external_zod_namespaceObject.z.string().describe('导出文件类型'),
-      saveFolder: external_zod_namespaceObject.z.string().describe('导出的文件要保存到的目录。禁止使用相对目录！该参数为可选参数，如果用户没有明确让你导出到当前目录，该参数可以不用传递，会直接在浏览器端进行导出。').optional()
+    inputSchema: __WEBPACK_EXTERNAL_MODULE_zod_z__.object({
+      exportType: __WEBPACK_EXTERNAL_MODULE_zod_z__.string().describe('导出文件类型'),
+      saveFolder: __WEBPACK_EXTERNAL_MODULE_zod_z__.string().describe('导出的文件要保存到的目录。禁止使用相对目录！该参数为可选参数，如果用户没有明确让你导出到当前目录，该参数可以不用传递，会直接在浏览器端进行导出。').optional()
     })
   }, /*#__PURE__*/function () {
     var _ref2 = export_mind_map_to_asyncToGenerator(/*#__PURE__*/export_mind_map_to_regenerator().m(function _callee(_ref) {
@@ -833,9 +840,9 @@ function registerExportMindMapTo(server) {
             throw new Error('导出文件内容为空。');
           case 5:
             base64Data = base64Content.split(',')[1];
-            filePath = external_path_namespaceObject.join(saveFolder, "".concat(res.id, ".").concat(exportType));
+            filePath = __WEBPACK_EXTERNAL_MODULE_path_default__.join(saveFolder, "".concat(res.id, ".").concat(exportType));
             buffer = Buffer.from(base64Data, 'base64');
-            external_fs_namespaceObject.writeFileSync(filePath, buffer);
+            __WEBPACK_EXTERNAL_MODULE_fs_default__.writeFileSync(filePath, buffer);
             text = '文件已成功导出到：' + filePath + '。';
           case 6:
             return _context.a(2, {
@@ -899,7 +906,7 @@ function src_asyncToGenerator(n) { return function () { var t = this, e = argume
 
 
 
-var server = new mcp_js_namespaceObject.McpServer({
+var server = new __WEBPACK_EXTERNAL_MODULE__modelcontextprotocol_sdk_server_mcp_js_45c326f0_McpServer__({
   name: 'simple-mind-map-mcp',
   version: '0.1.0'
 });
@@ -936,7 +943,7 @@ function _main() {
           return startHttpServer(config.port);
         case 1:
           // 连接 MCP 传输
-          transport = new stdio_js_namespaceObject.StdioServerTransport();
+          transport = new __WEBPACK_EXTERNAL_MODULE__modelcontextprotocol_sdk_server_stdio_js_25848778_StdioServerTransport__();
           _context.n = 2;
           return server.connect(transport);
         case 2:
@@ -952,5 +959,3 @@ main()["catch"](function (err) {
   log.error('Failed to start:', err);
   process.exit(1);
 });
-/******/ })()
-;
