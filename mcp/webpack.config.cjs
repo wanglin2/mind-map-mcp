@@ -1,5 +1,6 @@
 const path = require('path')
 const nodeExternals = require('webpack-node-externals')
+const webpack = require('webpack')
 
 module.exports = {
   // 指定为 Node.js 环境
@@ -48,5 +49,12 @@ module.exports = {
   },
   optimization: {
     minimize: false
-  }
+  },
+  plugins: [
+    new webpack.BannerPlugin({
+      banner: '#!/usr/bin/env node',
+      raw: true,
+      entryOnly: true
+    })
+  ]
 }

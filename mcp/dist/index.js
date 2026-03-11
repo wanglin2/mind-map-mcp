@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import { McpServer as __WEBPACK_EXTERNAL_MODULE__modelcontextprotocol_sdk_server_mcp_js_45c326f0_McpServer__ } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport as __WEBPACK_EXTERNAL_MODULE__modelcontextprotocol_sdk_server_stdio_js_25848778_StdioServerTransport__ } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { default as __WEBPACK_EXTERNAL_MODULE_http_default__ } from "http";
