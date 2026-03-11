@@ -13,7 +13,7 @@ import { config } from './config.js'
 
 const server = new McpServer({
   name: 'simple-mind-map-mcp',
-  version: '0.1.0',
+  version: '0.1.0'
 })
 
 // 注册所有工具
@@ -32,10 +32,7 @@ process.stdin.on('close', () => gracefulShutdown('stdin closed'))
 // 启动服务
 async function main() {
   // 启动内嵌 HTTP/WebSocket 服务器
-  const actualPort = await startHttpServer(config.port)
-  if (actualPort !== config.port) {
-    log.info(`Note: Using port ${actualPort} instead of ${config.port}`)
-  }
+  await startHttpServer(config.port)
 
   // 连接 MCP 传输
   const transport = new StdioServerTransport()
@@ -43,7 +40,7 @@ async function main() {
   log.info('MCP server connected')
 }
 
-main().catch((err) => {
+main().catch(err => {
   log.error('Failed to start:', err)
   process.exit(1)
 })

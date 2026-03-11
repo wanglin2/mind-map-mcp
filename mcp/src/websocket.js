@@ -28,7 +28,7 @@ export function startWebSocket(server) {
     ws.on('message', data => {
       try {
         const msg = JSON.parse(data.toString())
-        console.log('Received message:', msg)
+        log.info('Received message:', msg)
 
         if (!isPlainObject(msg)) {
           return
@@ -83,7 +83,7 @@ export function sendMsg(msg) {
   }
   clients.forEach(client => {
     if (client.readyState === WebSocket.OPEN) {
-      console.log('Sending message:', msg)
+      log.info('Sending message:', msg)
       client.send(JSON.stringify(msg))
     }
   })

@@ -16,4 +16,4 @@ function createLogger(prefix) {
   }
 }
 
-export const log = createLogger('Simplemindmap MCP')
+export const log = createLogger('SimpleMindMap MCP')

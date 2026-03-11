@@ -35,7 +35,9 @@ export function registerSetMindMapData(server) {
                 '已通知思维导图页面渲染新数据。接下来你可以使用下面这些工具：\n' +
                 `• set_mind_map_data - 全量更新编辑器渲染的思维导图数据\n` +
                 `• set_mind_map_theme - 修改编辑器渲染的思维导图样式主题\n` +
-                `• set_mind_map_layout - 修改编辑器渲染的思维导图结构布局\n`
+                `• set_mind_map_layout - 修改编辑器渲染的思维导图结构布局\n` + 
+                `• export_mind_map_to - 导出为指定文件\n` + 
+                `• close_editor - 关闭当前打开的思维导图编辑器页面\n`
             }
           ]
         }

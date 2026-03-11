@@ -251,11 +251,6 @@ export const themeStr =
 
 const exportTypeList = [
   {
-    name: '思绪文件',
-    type: 'smm',
-    desc: 'SimpleMindMap私有格式，可用于再次导入，客户端可直接编辑'
-  },
-  {
     name: '图片',
     type: 'png',
     desc: '常用图片格式，适合查看分享'
@@ -289,16 +284,6 @@ const exportTypeList = [
     name: 'Excel',
     type: 'xlsx',
     desc: '表格文本形式，可用Excel软件编辑'
-  },
-  {
-    name: 'FreeMind',
-    type: 'mm',
-    desc: 'FreeMind软件格式'
-  },
-  {
-    name: 'JSON',
-    type: 'json',
-    desc: '流行的数据交换格式，可用于再次导入'
   }
 ]
 

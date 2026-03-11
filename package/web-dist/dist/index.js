@@ -1,6 +1,6 @@
 let mindMapInstance = null
 const getDataFromBackend = () => {
-  return new Promise((resolve, reject) => {
+  return new Promise(resolve => {
     setTimeout(() => {
       resolve({
         mindMapData: {
@@ -32,33 +32,25 @@ const setTakeOverAppMethods = data => {
     return data.mindMapData
   }
   // 保存思维导图数据的函数
-  window.takeOverAppMethods.saveMindMapData = data => {
-    console.log(data)
-  }
+  window.takeOverAppMethods.saveMindMapData = data => {}
   // 获取思维导图配置，也就是实例化时会传入的选项
   window.takeOverAppMethods.getMindMapConfig = () => {
     return data.mindMapConfig
   }
   // 保存思维导图配置
-  window.takeOverAppMethods.saveMindMapConfig = config => {
-    console.log(config)
-  }
+  window.takeOverAppMethods.saveMindMapConfig = config => {}
   // 获取语言的函数
   window.takeOverAppMethods.getLanguage = () => {
     return data.lang
   }
   // 保存语言的函数
-  window.takeOverAppMethods.saveLanguage = lang => {
-    console.log(lang)
-  }
+  window.takeOverAppMethods.saveLanguage = lang => {}
   // 获取本地配置的函数
   window.takeOverAppMethods.getLocalConfig = () => {
     return data.localConfig
   }
   // 保存本地配置的函数
-  window.takeOverAppMethods.saveLocalConfig = config => {
-    console.log(config)
-  }
+  window.takeOverAppMethods.saveLocalConfig = config => {}
 }
 const initWS = () => {
   let ws = null
@@ -68,7 +60,7 @@ const initWS = () => {
   let reconnectTimer = null
 
   const getWebSocketUrl = () => {
-    const { protocol, hostname, host, search } = window.location
+    const { protocol, host } = window.location
     const wsProtocol = protocol === 'https:' ? 'wss:' : 'ws:'
     return `${wsProtocol}//${host}`
   }
@@ -102,6 +94,7 @@ const initWS = () => {
         if (msg.type === 'set_mind_map_data') {
           handleSetMindMapData(msg)
         } else if (msg.type === 'set_mind_map_layout') {
+          fit()
           mindMapInstance.setLayout(msg.layout)
         } else if (msg.type === 'set_mind_map_theme') {
           mindMapInstance.setTheme(msg.theme)
@@ -144,6 +137,14 @@ const initWS = () => {
     }, delay)
   }
 
+  const fit = () => {
+    const onEnd = () => {
+      mindMapInstance.view.fit()
+      mindMapInstance.off('node_tree_render_end', onEnd)
+    }
+    mindMapInstance.on('node_tree_render_end', onEnd)
+  }
+
   const handleSetMindMapData = ({ data, layout, theme }) => {
     const mindMapData = {
       root: window.simpleMindMap.default.markdown.transformMarkdownTo(data)
@@ -156,11 +157,7 @@ const initWS = () => {
         template: theme
       }
     }
-    const onEnd = () => {
-      mindMapInstance.view.fit()
-      mindMapInstance.off('node_tree_render_end', onEnd)
-    }
-    mindMapInstance.on('node_tree_render_end', onEnd)
+    fit()
     window.$bus.$emit('setData', mindMapData)
   }
 
@@ -172,7 +169,8 @@ const initWS = () => {
         ws.send(
           JSON.stringify({
             type: 'export_mind_map_to',
-            exportOnBrowser
+            exportOnBrowser,
+            id
           })
         )
         return
@@ -181,7 +179,6 @@ const initWS = () => {
         throw new Error(`Unsupported export type: ${exportType}`)
       }
       const res = await mindMapInstance.doExport[exportType]()
-      console.log(res)
       if (res) {
         ws.send(
           JSON.stringify({
@@ -209,7 +206,9 @@ const initWS = () => {
 
   connect()
 }
+
 initWS()
+
 window.onload = async () => {
   if (!window.takeOverApp) return
   // 请求数据
@@ -218,7 +217,6 @@ window.onload = async () => {
   setTakeOverAppMethods(data)
   // 思维导图实例创建完成事件
   window.$bus.$on('app_inited', mindMap => {
-    console.log(mindMap)
     mindMapInstance = mindMap
   })
   // 可以通过window.$bus.$on()来监听应用的一些事件
