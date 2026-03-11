@@ -27,14 +27,12 @@
     "zod": "^3.25.76"
   },
   "devDependencies": {
-    "@excalidraw/excalidraw": "^0.18.0",
-    "@excalidraw/mermaid-to-excalidraw": "1.1.2",
-    "webpack": "^5.98.0",
-    "webpack-cli": "^6.0.1",
     "@babel/core": "^7.28.0",
     "@babel/preset-env": "^7.28.0",
     "@types/node": "^16.11.6",
-    "babel-loader": "^10.0.0"
+    "babel-loader": "^10.0.0",
+    "webpack": "^5.98.0",
+    "webpack-cli": "^6.0.1"
   },
   "keywords": [
     "mcp",
