@@ -44,7 +44,7 @@ export async function startHttpServer(port) {
   const __dirname = path.dirname(__filename)
   // 当前目录
   const webRoot = isDev
-    ? path.resolve(__dirname, '../../package/web-dist')
+    ? path.resolve(__dirname, '../web-dist')
     : path.resolve(__dirname, './web-dist')
   if (!fs.existsSync(webRoot)) {
     throw new Error(`web-dist not found at ${webRoot}.`)
